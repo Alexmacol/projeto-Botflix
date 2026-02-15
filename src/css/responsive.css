@@ -1,0 +1,25 @@
+@media (max-width: 768px) {
+  .movie-card {
+    flex-direction: column; /* Empilha os itens verticalmente */
+    max-width: 320px; /* Limita a largura em telas pequenas */
+  }
+
+  .movie-poster,
+  .movie-info {
+    width: 100%;
+  }
+
+  .movie-info {
+    padding: 24px;
+  }
+
+  .movie-overview {
+    height: auto; 
+    min-height: 100px; 
+    max-height: 200px; 
+    overflow: auto;
+  }
+  .new-search-button {
+    max-width: 320px; 
+  }
+}

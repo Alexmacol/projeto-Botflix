@@ -1,0 +1,442 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.container .main-content {
+  width: 100%;
+  min-height: 100vh;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-header {
+  margin: 22px 0;
+}
+
+.brand-header .container-logo {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.robot-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  animation: float 3s ease-in-out infinite;
+}
+
+.container-logo .brand-title {
+  /* color: #f20612; */
+  /* color: #ff0000; */
+  color: #00ffff;
+  font-family: "orbitron", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.brand-subtitle {
+  color: #ffffff;
+  font-family: "orbitron", sans-serif;
+  font-size: 20px;
+  /* font-weight: 500; */
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.search-card {
+  width: 100%;
+  max-width: 600px;
+  padding: 32px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.search-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mood-textarea {
+  width: 100%;
+  padding: 16px 64px 16px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-size: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  resize: none;
+}
+.mood-textarea:focus {
+  outline: none;
+  border-color: #00d0d9;
+  box-shadow: 0 0 0 3px rgba(0, 208, 217, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.examples {
+  color: #ffffff;
+
+  font-family: "orbitron", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  letter-spacing: 2.1px;
+}
+
+.examples-title {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.6;
+  font-size: 15px;
+  font-weight: 500;
+  opacity: 0.8;
+  margin-left: 15px;
+}
+
+.search-button {
+  background-color: #00ffff;
+  width: 100%;
+  padding: 16px 32px;
+  color: #2d004d;
+  font-family: "orbitron", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.search-button:hover {
+  background-color: #ffffff; /* O botão "acende" */
+  box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 60px rgba(0, 255, 255, 0.3); /* Triple Glow */
+  animation: flicker 0.15s infinite; /* Tremor elétrico */
+  transform: scale(1.01); /* Leve aumento */
+}
+
+.search-button:hover::after {
+  content: "";
+  position: absolute;
+  /* O "top, left, right, bottom" negativos criam o afastamento da borda */
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+
+  border: 1px solid #00ffff;
+  border-radius: 12px; /* Um pouco maior que o do botão (8px + 4px de folga) */
+  opacity: 0.6;
+  pointer-events: none; /* Garante que o mouse ignore a borda e foque no botão */
+
+  /* Animação opcional para a borda não aparecer "do nada" */
+  transition: all 0.2s ease;
+  animation: flicker-border 1.5s infinite;
+}
+
+/* Lógica do Tremor (Flicker) */
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Efeito de brilho pulsante na borda (Flicker suave) */
+@keyframes flicker-border {
+  0% {
+    opacity: 0.2;
+    box-shadow: 0 0 2px #00ffff;
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 8px #00ffff;
+  }
+  100% {
+    opacity: 0.2;
+    box-shadow: 0 0 2px #00ffff;
+  }
+}
+
+.results {
+  width: 100%;
+  /* margin-top: 20px; */
+  display: none;
+  transition: opacity 0.5s ease-out;
+}
+
+.results h2 {
+  padding: 30px 0;
+  text-align: center;
+}
+
+.results.show {
+  display: block;
+}
+
+.movies-grid {
+  gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie-card {
+  display: flex;
+  width: 100%;
+  max-width: 768px;
+  background: rgba(30, 30, 40, 0.95);
+  border: 1.5px solid #222;
+  border-radius: 19px;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.movie-card:hover {
+  border-color: #e50914;
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.28);
+}
+
+.movie-poster {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-poster {
+  width: 100%;
+  height: 420px;
+  background: #222;
+  color: #888;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.movie-info {
+  width: 50%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-title {
+  margin-bottom: 8px;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.movie-overview {
+  flex-grow: 1;
+  padding: 10px;
+  margin-bottom: 16px;
+  min-height: 60px;
+  color: #ccc;
+  font-size: 16px;
+  overflow: auto;
+}
+
+.movie-rating {
+  color: #e50914;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.new-search-button {
+  background-color: #e50914;
+  width: 100%;
+  max-width: 768px;
+  margin-top: 32px;
+  padding: 16px 32px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-search-button:hover {
+  background-color: #f40612;
+}
+
+/*animação*/
+.bg {
+  left: -50%;
+  right: -50%;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(-60deg, #2d004d 50%, #181717 50%);
+  position: fixed;
+  z-index: -1;
+  opacity: 0.7;
+  animation: slide 4s ease-in-out infinite alternate;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 5s;
+}
+
+.bg3 {
+  animation-duration: 6s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-20%);
+  }
+
+  100% {
+    transform: translateX(20%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Modal Alert */
+.modal-alert {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+
+  /* Estado fechado */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+/* Estado aberto */
+.modal-alert.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Conteúdo da modal */
+.modal-content {
+  background: rgba(30, 30, 40, 0.95);
+  border: 2px solid #00ffff;
+  padding: 32px;
+  border-radius: 16px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+
+  transform: translateY(-10px) scale(0.96);
+  opacity: 0;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* Animação de entrada */
+.modal-alert.show .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Animação de saída */
+.modal-alert.closing .modal-content {
+  transform: translateY(-10px) scale(0.96);
+  opacity: 0;
+}
+
+/* Texto */
+#alert-message {
+  font-family: "Orbitron", sans-serif;
+  font-size: 18px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* Botão */
+.close-button {
+  background-color: #00ffff;
+  color: #2d004d;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px #00ffff;
+}

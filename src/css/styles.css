@@ -1,3 +1,8 @@
+html {
+  scrollbar-gutter: stable; /* Chrome, Edge,Firefox */
+  overflow-y: scroll; /* Safari — fallback */
+}
+
 body {
   background-color: #000000;
   color: #ffffff;
@@ -18,6 +23,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transition: opacity 0.5s ease-out;
+}
+
+.main-content.hiding {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+.main-content.hidden {
+  display: none !important;
+}
+
+.main-content.showing {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 .brand-header {
@@ -41,8 +59,6 @@ body {
 }
 
 .container-logo .brand-title {
-  /* color: #f20612; */
-  /* color: #ff0000; */
   color: #00ffff;
   font-family: "orbitron", sans-serif;
   font-size: 48px;
@@ -53,7 +69,6 @@ body {
   color: #ffffff;
   font-family: "orbitron", sans-serif;
   font-size: 20px;
-  /* font-weight: 500; */
   line-height: 1.6;
   text-align: center;
   letter-spacing: 2px;
@@ -93,6 +108,8 @@ body {
   border-color: #00d0d9;
   box-shadow: 0 0 0 3px rgba(0, 208, 217, 0.1);
   background-color: rgba(255, 255, 255, 0.1);
+  caret-color: #00d0d9;
+  caret-shape: block;
 }
 
 .examples {
@@ -165,6 +182,30 @@ body {
   animation: flicker-border 1.5s infinite;
 }
 
+.search-button:disabled {
+  color: #000000;
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  filter: grayscale(100%);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.search-button:disabled:hover::after {
+  display: none;
+}
+
 /* Lógica do Tremor (Flicker) */
 @keyframes flicker {
   0% {
@@ -194,20 +235,47 @@ body {
   }
 }
 
-.results {
+.results-container {
   width: 100%;
-  /* margin-top: 20px; */
-  display: none;
+  max-width: 860px;
+  margin: 24px auto;
+  padding: 24px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  opacity: 1;
   transition: opacity 0.5s ease-out;
+  display: none;
 }
 
-.results h2 {
-  padding: 30px 0;
-  text-align: center;
-}
-
-.results.show {
+.results-container.show {
   display: block;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.results-container.hiding {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 }
 
 .movies-grid {
@@ -221,6 +289,7 @@ body {
   display: flex;
   width: 100%;
   max-width: 768px;
+  margin-top: 32px;
   background: rgba(30, 30, 40, 0.95);
   border: 1.5px solid #222;
   border-radius: 19px;
@@ -232,7 +301,7 @@ body {
 }
 
 .movie-card:hover {
-  border-color: #e50914;
+  border-color: #00ffff;
   transform: translateY(-8px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.28);
 }
@@ -289,24 +358,118 @@ body {
   font-weight: 600;
 }
 
+.movie-providers {
+  margin-top: 12px;
+}
+
+.provider-category {
+  margin-bottom: 8px;
+}
+
+.provider-category-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+
+.provider-logos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.provider-logo {
+  height: 36px;
+  border-radius: 6px;
+  background: #fff;
+  padding: 2px;
+}
+
+.provider-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.provider-badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.badge-flatrate {
+  background: #2ecc71;
+  color: #fff;
+}
+.badge-rent {
+  background: #3498db;
+  color: #fff;
+}
+.badge-buy {
+  background: #9b59b6;
+  color: #fff;
+}
+.badge-free {
+  background: #f1c40f;
+  color: #000;
+}
+
+.providers-note {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  margin-top: 10px;
+  text-align: center;
+  font-style: italic;
+}
+
 .new-search-button {
-  background-color: #e50914;
-  width: 100%;
-  max-width: 768px;
-  margin-top: 32px;
+  display: block;
+  margin: 0 auto;
+  background-color: #00ffff;
+  /* width: 100%; */
+  max-width: 384px;
   padding: 16px 32px;
-  color: #ffffff;
+  color: #2d004d;
+  font-family: "orbitron", sans-serif;
   font-size: 16px;
   font-weight: 600;
   letter-spacing: 1px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  position: relative;
   transition: all 0.2s ease;
 }
 
 .new-search-button:hover {
-  background-color: #f40612;
+  background-color: #ffffff; /* O botão "acende" */
+  box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 60px rgba(0, 255, 255, 0.3); /* Triple Glow */
+  animation: flicker 0.15s infinite; /* Tremor elétrico */
+  transform: scale(1.01); /* Leve aumento */
+}
+
+.new-search-button:hover::after {
+  content: "";
+  position: absolute;
+  /* O "top, left, right, bottom" negativos criam o afastamento da borda */
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid #00ffff;
+  border-radius: 12px; /* Um pouco maior que o do botão (8px + 4px de folga) */
+  opacity: 0.6;
+  pointer-events: none; /* Garante que o mouse ignore a borda e foque no botão */
+  /* Animação opcional para a borda não aparecer "do nada" */
+  transition: all 0.2s ease;
+  animation: flicker-border 1.5s infinite;
 }
 
 /*animação*/

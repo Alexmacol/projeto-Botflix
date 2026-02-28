@@ -1,12 +1,14 @@
-import { renderMovieCard, showAlert } from "./ui.js";
 import { fetchMovieRecommendation } from "./api.js";
+import { renderMovieCard, showAlert, clearResults } from "./ui.js";
 
 let moodTextArea;
 let searchButton;
+let newSearchButton;
 
 document.addEventListener("DOMContentLoaded", () => {
   moodTextArea = document.getElementById("mood-textarea");
   searchButton = document.getElementById("search-button");
+  newSearchButton = document.getElementById("new-search-button");
 
   setupEventListeners();
 });
@@ -20,6 +22,10 @@ function setupEventListeners() {
   });
 
   searchButton.addEventListener("click", handleSearch);
+
+  if (newSearchButton) {
+    newSearchButton.addEventListener("click", clearResults);
+  }
 }
 
 async function handleSearch() {
@@ -30,6 +36,10 @@ async function handleSearch() {
     return;
   }
 
+  const originalButtonContent = searchButton.innerHTML;
+  searchButton.disabled = true;
+  searchButton.textContent = "Buscando o filme";
+
   try {
     const data = await fetchMovieRecommendation(mood);
 
@@ -38,12 +48,15 @@ async function handleSearch() {
       renderMovieCard(movie);
     } else {
       showAlert(
-        "Nenhum filme encontrado para esse humor. Tente ser mais descritivo!"
+        "Nenhum filme encontrado para esse humor. Tente ser mais descritivo!",
       );
     }
   } catch (error) {
     console.error("Falha ao buscar recomendação:", error);
     showAlert("Ocorreu um erro ao buscar o filme. Tente novamente mais tarde.");
+  } finally {
+    searchButton.disabled = false;
+    searchButton.innerHTML = originalButtonContent;
   }
 }
 

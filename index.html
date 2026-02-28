@@ -90,42 +90,50 @@
               id="search-button"
               class="search-button">
               <span class="play-icon">&#9654;</span>
-              Encontrar Filmes
+              Buscar Filme
             </button>
           </div>
         </section>
+      </div>
 
+      <div  id="results-container" class="results-container">
         <div
           id="results"
           class="results">
-          <h2>O Filme Perfeito para Você</h2>
+          <button
+            type="button"
+            id="new-search-button"
+            class="new-search-button">
+            <span class="play-icon">&#9654;</span>
+            Nova Busca
+          </button>
           <div
             id="movies-grid"
             class="movies-grid"></div>
           <div
             id="movie"
             class="movie"></div>
-          <div class="movies-grid">
-            <button
-              type="button"
-              id="new-search-button"
-              class="new-search-button">
-              <span class="play-icon">&#9654;</span>
-              Nova Busca
-            </button>
-          </div>
+          <div class="movies-grid"></div>
         </div>
       </div>
     </main>
 
-    <!-- Modal de Alerta Customizado -->
-    <div id="custom-alert" class="modal-alert">
+    <!-- Modal de Alerta Customizavel -->
+    <div
+      id="custom-alert"
+      class="modal-alert">
       <div class="modal-content">
         <p id="alert-message"></p>
-        <button id="close-alert" class="close-button">OK</button>
+        <button
+          id="close-alert"
+          class="close-button">
+          OK
+        </button>
       </div>
     </div>
 
-    <script src="src/js/main.js" type="module"></script>
+    <script
+      src="src/js/main.js"
+      type="module"></script>
   </body>
 </html>

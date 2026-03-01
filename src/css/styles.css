@@ -6,7 +6,7 @@ html {
 body {
   background-color: #000000;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: "Orbitron", sans-serif;
 }
 
 .container {
@@ -470,6 +470,60 @@ body {
   /* Animação opcional para a borda não aparecer "do nada" */
   transition: all 0.2s ease;
   animation: flicker-border 1.5s infinite;
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #00ffff;
+  padding: 15px 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.footer .container {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-sizing: border-box;
+}
+.footer-location {
+  color: #00ffff4d;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links a {
+  color: #00ffff;
+  font-size: 20px;
+  transition: all 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px #00ffff);
+}
+
+.footer-text-center {
+  text-align: center;
+  margin-top: 10px;
+  color: #ffffff;
+  font-size: 0.7rem;
+  opacity: 0.5;
 }
 
 /*animação*/

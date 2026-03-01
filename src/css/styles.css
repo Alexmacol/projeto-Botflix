@@ -348,6 +348,7 @@ body {
   margin-bottom: 16px;
   min-height: 60px;
   color: #ccc;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   overflow: auto;
 }

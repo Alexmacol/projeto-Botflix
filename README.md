@@ -2,9 +2,8 @@
 
 O **BotFlix** é uma aplicação web moderna e intuitiva projetada para ajudar você a encontrar o filme perfeito com base no seu momento. Através de uma interface futurista, você descreve como está se sentindo ou o que deseja assistir, e o nosso assistente robô faz o resto!
 
-[![Prévia do projeto Botflix](src/images/preview.webp)]([https://](https://projeto-botflix.vercel.app/))
+[![Prévia do projeto Botflix](src/images/preview.webp)](https://projeto-botflix.vercel.app/)
 Para abrir o link em uma nova aba, utilize **Ctrl + Clique** (Windows) ou **Cmd + Clique** (Mac).
-
 
 ---
 

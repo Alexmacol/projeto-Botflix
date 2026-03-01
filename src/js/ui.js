@@ -74,7 +74,6 @@ function resolveProvidersByPriority(watch) {
 function renderProviders(watch) {
   if (!watch) return null;
 
-  // Badges por categoria
   const PROVIDER_BADGES = {
     flatrate: { label: "Assinatura", class: "badge-flatrate" },
     rent: { label: "Aluguel", class: "badge-rent" },
@@ -82,28 +81,27 @@ function renderProviders(watch) {
     free: { label: "Grátis", class: "badge-free" },
   };
 
-  //  Versão deduplicada e priorizada
   const resolvedWatch = resolveProvidersByPriority(watch);
 
   const providersContainer = document.createElement("div");
   providersContainer.className = "movie-providers";
 
-  const categories = [
-    { key: "flatrate" },
-    { key: "rent" },
-    { key: "buy" },
-    { key: "free" },
-  ];
+  const categories = ["flatrate", "rent", "buy", "free"];
 
-  categories.forEach(({ key }) => {
-    if (!Array.isArray(resolvedWatch[key]) || resolvedWatch[key].length === 0) {
+  let hasProviders = false;
+
+  categories.forEach((key) => {
+    const providers = resolvedWatch[key];
+
+    if (!Array.isArray(providers) || providers.length === 0) {
       return;
     }
+
+    hasProviders = true;
 
     const categoryDiv = document.createElement("div");
     categoryDiv.className = "provider-category";
 
-    // Badge da categoria (uma vez por grupo)
     const badgeInfo = PROVIDER_BADGES[key];
     if (badgeInfo) {
       const badge = document.createElement("div");
@@ -115,14 +113,13 @@ function renderProviders(watch) {
     const logosDiv = document.createElement("div");
     logosDiv.className = "provider-logos";
 
-    // Logos dos providers
-    resolvedWatch[key].forEach((provider) => {
+    providers.forEach((provider) => {
       const link = document.createElement("a");
       link.href = watch.link || "#";
       link.target = "_blank";
       link.rel = "noopener noreferrer";
       link.className = "provider-link";
-      link.title = `Ver onde assistir no JustWatch`;
+      link.title = "Ver onde assistir no JustWatch";
 
       const img = document.createElement("img");
       img.src = `https://image.tmdb.org/t/p/w45${provider.logo_path}`;
@@ -137,11 +134,15 @@ function renderProviders(watch) {
     providersContainer.appendChild(categoryDiv);
   });
 
-  if (watch.link) {
+  if (hasProviders && watch.link) {
     const note = document.createElement("div");
     note.className = "providers-note";
-    note.textContent = "Os links abrem no JustWatch.";
+    note.innerHTML = 'Links externos via <strong>JustWatch</strong>.';
     providersContainer.appendChild(note);
+  }
+
+  if (!hasProviders) {
+    return null;
   }
 
   return providersContainer;

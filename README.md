@@ -1,6 +1,6 @@
 # 🤖 BotFlix - Seu Assistente Pessoal de Filmes
 
-O **BotFlix** é uma aplicação web moderna e intuitiva projetada para ajudar você a encontrar o filme perfeito com base no seu momento. Através de uma interface futurista, você descreve como está se sentindo ou o que deseja assistir, e o nosso assistente robô faz o resto!
+O **BotFlix** é uma aplicação web moderna e intuitiva projetada para ajudar você a encontrar o filme perfeito com base no seu momento. Através de uma interface futurista, você descreve como está se sentindo ou o que deseja assistir, e o nosso assistente robô faz o resto!**DISCLAIMER**: ESTE PROJETO DEPENDE DE AMBIENTE N8N ATIVO (PAGO) PARA FUNCIONAR COMPLETAMENTE.
 
 [![Prévia do projeto Botflix](src/images/preview.webp)](https://projeto-botflix.vercel.app/)
 Para abrir o link em uma nova aba, utilize **Ctrl + Clique** (Windows) ou **Cmd + Clique** (Mac).

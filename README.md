@@ -43,6 +43,8 @@ O projeto foi desenvolvido focando em performance e código limpo, utilizando:
   - **Manipulação de DOM:** Atualização dinâmica da interface sem recarregar a página.
 - **n8n (Automação de Workflow):** Orquestrador que recebe o texto do usuário, consulta a IA **Gemini** para interpretar a intenção, busca as informações do filme na **API do TMDB** e realiza uma nova requisição (via ID do filme) para identificar onde ele está disponível para assistir, devolvendo os dados completos para o frontend.
 
+![Workflow n8n](src/images/projeto-n8n.webp)
+
 ---
 
 ## 🌐 Arquitetura da Aplicação

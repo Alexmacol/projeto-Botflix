@@ -484,19 +484,6 @@ body {
   box-sizing: border-box;
 }
 
-.footer .container {
-  max-width: 56rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  box-sizing: border-box;
-}
-.footer-location {
-  color: #00ffff4d;
-  margin-bottom: 10px;
-}
-
 .footer-links {
   list-style: none;
   display: flex;

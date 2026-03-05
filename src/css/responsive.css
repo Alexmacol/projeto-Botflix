@@ -23,7 +23,7 @@
     max-height: 200px; 
     overflow: auto;
   }
-  .new-search-button {
+  .btn-primary--centered {
     max-width: 320px; 
   }
 }
@@ -36,7 +36,7 @@
   .movie-card {
     max-width: 100%;
   }
-  .new-search-button {
+  .btn-primary--full {
     max-width: 100%;
   }
 }

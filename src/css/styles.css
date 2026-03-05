@@ -9,6 +9,72 @@ body {
   font-family: "Orbitron", sans-serif;
 }
 
+/* BASE — compartilhada pelos dois botões */
+.btn-primary {
+  background-color: #00ffff;
+  padding: 16px 32px;
+  color: #2d004d;
+  font-family: "orbitron", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  box-shadow:
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 60px rgba(0, 255, 255, 0.3);
+  animation: flicker 0.15s infinite;
+  transform: scale(1.01);
+}
+
+.btn-primary:hover::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 1px solid #00ffff;
+  border-radius: 12px;
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  animation: flicker-border 1.5s infinite;
+}
+
+.btn-primary:disabled {
+  color: #000000;
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  filter: grayscale(100%);
+  animation: pulse 1.5s infinite;
+}
+
+.btn-primary:disabled:hover::after {
+  display: none;
+}
+
+/* MODIFICADORES — apenas o que muda entre eles */
+.btn-primary--full {
+  width: 100%;
+}
+
+.btn-primary--centered {
+  display: block;
+  margin: 0 auto;
+  max-width: 384px;
+}
+
 .container {
   max-width: 1200px;
   min-height: 100vh;
@@ -137,61 +203,7 @@ body {
   margin-left: 15px;
 }
 
-.search-button {
-  background-color: #00ffff;
-  width: 100%;
-  padding: 16px 32px;
-  color: #2d004d;
-  font-family: "orbitron", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.search-button:hover {
-  background-color: #ffffff; /* O botão "acende" */
-  box-shadow:
-    0 0 20px #00ffff,
-    0 0 40px #00ffff,
-    0 0 60px rgba(0, 255, 255, 0.3); /* Triple Glow */
-  animation: flicker 0.15s infinite; /* Tremor elétrico */
-  transform: scale(1.01); /* Leve aumento */
-}
-
-.search-button:hover::after {
-  content: "";
-  position: absolute;
-  /* O "top, left, right, bottom" negativos criam o afastamento da borda */
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-
-  border: 1px solid #00ffff;
-  border-radius: 12px; /* Um pouco maior que o do botão (8px + 4px de folga) */
-  opacity: 0.6;
-  pointer-events: none; /* Garante que o mouse ignore a borda e foque no botão */
-
-  /* Animação opcional para a borda não aparecer "do nada" */
-  transition: all 0.2s ease;
-  animation: flicker-border 1.5s infinite;
-}
-
-.search-button:disabled {
-  color: #000000;
-  opacity: 0.7;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-  filter: grayscale(100%);
-  animation: pulse 1.5s infinite;
-}
-
+/* Lógica do Pulsar (pulse) */
 @keyframes pulse {
   0%,
   100% {
@@ -200,10 +212,6 @@ body {
   50% {
     opacity: 0.3;
   }
-}
-
-.search-button:disabled:hover::after {
-  display: none;
 }
 
 /* Lógica do Tremor (Flicker) */
@@ -425,52 +433,6 @@ body {
   margin-top: 10px;
   text-align: center;
   font-style: italic;
-}
-
-.new-search-button {
-  display: block;
-  margin: 0 auto;
-  background-color: #00ffff;
-  /* width: 100%; */
-  max-width: 384px;
-  padding: 16px 32px;
-  color: #2d004d;
-  font-family: "orbitron", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.new-search-button:hover {
-  background-color: #ffffff; /* O botão "acende" */
-  box-shadow:
-    0 0 20px #00ffff,
-    0 0 40px #00ffff,
-    0 0 60px rgba(0, 255, 255, 0.3); /* Triple Glow */
-  animation: flicker 0.15s infinite; /* Tremor elétrico */
-  transform: scale(1.01); /* Leve aumento */
-}
-
-.new-search-button:hover::after {
-  content: "";
-  position: absolute;
-  /* O "top, left, right, bottom" negativos criam o afastamento da borda */
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
-  border: 1px solid #00ffff;
-  border-radius: 12px; /* Um pouco maior que o do botão (8px + 4px de folga) */
-  opacity: 0.6;
-  pointer-events: none; /* Garante que o mouse ignore a borda e foque no botão */
-  /* Animação opcional para a borda não aparecer "do nada" */
-  transition: all 0.2s ease;
-  animation: flicker-border 1.5s infinite;
 }
 
 .footer {

@@ -1,6 +1,6 @@
 // api.js - Módulo para chamadas de API
 
-const API_URL = "https://alexmacol.app.n8n.cloud/webhook/botflix-prod"; // URL atualizado
+const API_URL = "https://alexmacol2026fev-a.app.n8n.cloud/webhook/botflix"; // URL atualizado a cada 14 dias
 
 /**
  * Busca uma recomendação de filme baseada no humor do usuário.
